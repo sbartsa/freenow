@@ -1,5 +1,7 @@
 package com.freenow.test.helper.pageObjects;
 
+import com.freenow.test.helper.dto.Comment;
+import com.freenow.test.helper.dto.Post;
 import com.freenow.test.helper.dto.User;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
@@ -83,6 +85,32 @@ public class ApiHandler {
             usersList.add(User.mapJsonToUser(jsonObject));
         }
         return usersList;
+    }
+
+    /*
+    Get the post from the relevant endpoint as a List
+ */
+    public List<Post> getPosts(String endpoint) {
+        List<Post> postsList = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray(getRequest(endpoint).body().prettyPrint());
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            postsList.add(Post.mapJsonToPost(jsonObject));
+        }
+        return postsList;
+    }
+
+    /*
+        Get the post from the relevant endpoint as a List
+     */
+    public List<Comment> getComments(String endpoint) {
+        List<Comment> commentsList = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray(getRequest(endpoint).body().prettyPrint());
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            commentsList.add(Comment.mapJsonToComment(jsonObject));
+        }
+        return commentsList;
     }
 
 }
