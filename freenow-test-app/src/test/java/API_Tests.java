@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Created by stevevarsanis on 27/07/19.
+ *
+ * Documentation: https://stevevarsanis.slite.com/api/s/note/CYibBMU2hGwUDuh3yobtPf/Suite-Documentation
  */
 public class API_Tests extends CoreHelper {
     private API api;
