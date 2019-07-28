@@ -1,12 +1,18 @@
 package com.freenow.test.helper.pageObjects;
 
+import com.freenow.test.helper.dto.User;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.parsing.Parser;
 import com.jayway.restassured.response.Response;
 import com.freenow.test.helper.ConfigProperties;
 import com.freenow.test.helper.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -65,5 +71,18 @@ public class ApiHandler {
                 then().contentType(ContentType.JSON).extract().response();
     }
 
+
+    /*
+      Get the users from the relevant endpoint as a List
+    */
+    public List<User> getUsers(String endpoint) {
+        List<User> usersList = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray(getRequest(endpoint).body().prettyPrint());
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            usersList.add(User.mapJsonToUser(jsonObject));
+        }
+        return usersList;
+    }
 
 }
