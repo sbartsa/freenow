@@ -1,7 +1,14 @@
 package com.freenow.test.helper.pageObjects;
 
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.parsing.Parser;
+import com.jayway.restassured.response.Response;
 import com.freenow.test.helper.ConfigProperties;
 import com.freenow.test.helper.Logger;
+
+
+import static com.jayway.restassured.RestAssured.given;
 
 
 public class ApiHandler {
@@ -35,6 +42,27 @@ public class ApiHandler {
         logger = new Logger();
         ConfigProperties configProperties = new ConfigProperties();
         url = configProperties.getPropertyValue(ConfigProperties.APPLICATION_URL);
+    }
+
+
+    /*
+     * Create a custom URL based on the available routes and params
+     */
+    public String createURL(API route, String params) {
+        String urlString = url + route.get();
+        if (params != null) {
+            urlString += params;
+        }
+        logger.info("Created url connection string: " + urlString);
+        return urlString;
+    }
+
+
+    private Response getRequest(String endpoint) {
+        RestAssured.defaultParser = Parser.JSON;
+        return  given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON).
+                when().get(endpoint).
+                then().contentType(ContentType.JSON).extract().response();
     }
 
 
