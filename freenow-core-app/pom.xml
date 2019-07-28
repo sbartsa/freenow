@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>3.141.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>3.141.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>2.9.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+
+
+    <!-- parent coordinates -->
+    <parent>
+        <groupId>com.freenow.test</groupId>
+        <artifactId>freenow-api</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <!-- project coordinates -->
+    <artifactId>freenow-core-app</artifactId>
+    <name>freenow-core-app</name>
+    <version>1.0-SNAPSHOT</version>
+    <description>Free Now Test Automation Core</description>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+<!--        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>-->
+        <aspectj.version>1.8.5</aspectj.version>
+    </properties>
+
+
+</project>
