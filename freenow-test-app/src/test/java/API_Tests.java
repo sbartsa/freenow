@@ -41,6 +41,8 @@ public class API_Tests extends CoreHelper {
                                         .distinct()
                                         .findAny().get();
 
+        Assert.assertNotNull(samantha.getEmail());
+        Assert.assertNotNull(samantha.getUsername());
     }
 
     @Test(description = "Verify comments have valid email format", dependsOnMethods = "test1")
