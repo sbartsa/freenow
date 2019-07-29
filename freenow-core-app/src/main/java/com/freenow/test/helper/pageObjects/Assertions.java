@@ -8,8 +8,8 @@ public class Assertions {
     private static Logger logger;
 
     public static void verifyIsValidEmail(String email){
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-        assert email.matches(regex);
+        String emailRegex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        assert email.matches(emailRegex);
         Logger.pass("OK --> Email: " + email + " is valid");
     }
 

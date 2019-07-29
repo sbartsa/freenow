@@ -52,27 +52,4 @@ public class API_Validate_Schemas_Tests extends CoreHelper {
         Assertions.verifyJsonSchema(endPoint, "comments_json_schema_for_post.json");
     }
 
-
-
-
-//
-//    @Test(description = "Verify comments have valid email format", dependsOnMethods = "test1")
-//    public void test2() {
-//
-//        endPoint = api.apiHandler().createURL(ApiHandler.API.POSTS_WITH_USER_ID, String.valueOf(samantha.getId()));
-//        posts = api.apiHandler().getPosts(endPoint);
-//
-//        posts.forEach(post ->
-//        {
-//            endPoint = api.apiHandler().createURL(ApiHandler.API.COMMENTS_WITH_POST_ID, String.valueOf(post.getId()));
-//            comments = api.apiHandler().getComments(endPoint);
-//            for (Comment comment : comments) {
-//                Assertions.verifyIsValidEmail(comment.getEmail(), "posts_json_schema.json");
-//            }
-//
-//        });
-//
-//    }
-
-
 }
