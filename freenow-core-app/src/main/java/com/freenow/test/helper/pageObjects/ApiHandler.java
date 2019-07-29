@@ -5,9 +5,7 @@ import com.freenow.test.helper.Logger;
 import com.freenow.test.helper.dto.Comment;
 import com.freenow.test.helper.dto.Post;
 import com.freenow.test.helper.dto.User;
-import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
-import com.jayway.restassured.parsing.Parser;
 import com.jayway.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +18,7 @@ import static com.jayway.restassured.RestAssured.given;
 public class ApiHandler {
 
     Logger logger;
-    private String url;
+    public String url;
     private static String usersRoute = "/users";
     private static String postsRoute = "/posts";
     private static String commentsRoute = "/comments";
@@ -64,10 +62,25 @@ public class ApiHandler {
     }
 
     public Response getRequest(String endpoint) {
-        RestAssured.defaultParser = Parser.JSON;
         return  given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON).
                 when().get(endpoint).
                 then().contentType(ContentType.JSON).extract().response();
+    }
+
+    public Response postRequest(String endpoint, String requestBody) {
+        return  given().contentType(ContentType.JSON).body(requestBody).post(endpoint);
+    }
+
+    public Response deleteRequest(String endpoint) {
+        return  given().contentType(ContentType.JSON).delete(endpoint);
+    }
+
+    public Response putRequest(String endpoint,String requestBody) {
+        return  given().contentType(ContentType.JSON).body(requestBody).put(endpoint);
+    }
+
+    public Response patchRequest(String endpoint, String requestBody) {
+        return  given().contentType(ContentType.JSON).body(requestBody).patch(endpoint);
     }
 
     /*
