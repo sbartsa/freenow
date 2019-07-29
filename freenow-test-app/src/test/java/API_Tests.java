@@ -55,15 +55,12 @@ public class API_Tests extends CoreHelper {
 
         posts.forEach(post ->
         {
-            try {
-                endPoint = api.apiHandler().createURL(ApiHandler.API.COMMENTS_WITH_POST_ID, String.valueOf(post.getId()));
-                comments = api.apiHandler().getComments(endPoint);
-                for (Comment comment : comments) {
-                    Assertions.verifyIsValidEmail(comment.getEmail());
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            endPoint = api.apiHandler().createURL(ApiHandler.API.COMMENTS_WITH_POST_ID, String.valueOf(post.getId()));
+            comments = api.apiHandler().getComments(endPoint);
+            for (Comment comment : comments) {
+                Assertions.verifyIsValidEmail(comment.getEmail());
             }
+
         });
 
     }

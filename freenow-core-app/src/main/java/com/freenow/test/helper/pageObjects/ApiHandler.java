@@ -1,5 +1,7 @@
 package com.freenow.test.helper.pageObjects;
 
+import com.freenow.test.helper.ConfigProperties;
+import com.freenow.test.helper.Logger;
 import com.freenow.test.helper.dto.Comment;
 import com.freenow.test.helper.dto.Post;
 import com.freenow.test.helper.dto.User;
@@ -7,17 +9,13 @@ import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.parsing.Parser;
 import com.jayway.restassured.response.Response;
-import com.freenow.test.helper.ConfigProperties;
-import com.freenow.test.helper.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
-
 
 public class ApiHandler {
 
@@ -65,14 +63,12 @@ public class ApiHandler {
         return urlString;
     }
 
-
-    private Response getRequest(String endpoint) {
+    public Response getRequest(String endpoint) {
         RestAssured.defaultParser = Parser.JSON;
         return  given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON).
                 when().get(endpoint).
                 then().contentType(ContentType.JSON).extract().response();
     }
-
 
     /*
       Get the users from the relevant endpoint as a List
