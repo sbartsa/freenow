@@ -14,11 +14,11 @@ public class Logger {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public void info(String text)  { System.out.println("INFO: " + text); }
+    public static void info(String text)  { System.out.println("INFO: " + text); }
 
-    public void pass(String text)  { System.out.println(ANSI_GREEN + "PASS: " + text + ANSI_RESET); } //System.out.println("->PASS: " + text); }
+    public static void pass(String text)  { System.out.println(ANSI_GREEN + "PASS: " + text + ANSI_RESET); } //System.out.println("->PASS: " + text); }
 
-    public void error(String text){
+    public static void error(String text){
         System.out.println(ANSI_RED + "ERROR: " + text + ANSI_RESET);
     }
 
